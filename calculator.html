@@ -45,25 +45,92 @@
     function calculate(input) {
 
       let output  // we're going to return this value
-
-      // replace the code below with your own
       // here are some examples of what you are allowed to do:
 
+      // you may use any member function of the Array class
       // you may use any member function of the String class
       // search for the String class docs on MDN
-      output = input.at(0)
+      // output = input.at(0)
 
       // you may use Number() to convert a String value to Numeric
-      output = Number(input)
+      // output = Number(input)
 
       // and of course, you may use basic operations
-      output = output + 1
+      // output = eval(input)
+
+      // replace the code below with your own
+
+      // 293-20/10+3
+
+      // 293,-,20,/,10,+,3
+      
+      //TOKENIZE: convert to ["293", "-", "20", "/", "10", "+", "3"]
+
+      let tokenizedArray = tokenize(input)
 
       // return the final output for display
       return output
     }
 
     // you'll need to define your own helper functions down here!
+
+    function tokenize(input) {
+
+      let tokenArray = [];
+
+      let len = input.length;
+
+      let prevNumIndex = 0;
+
+      for (i = 0; i < len; i++) {
+        if (input[i] == "*" || input[i] == "/" || input[i] == "+" || input[i] == "-") {
+          tokenArray.push(input.substring(prevNumIndex, i)); //NOTE: index i is not included
+          tokenArray.push(input[i]);
+          prevNumIndex = i + 1;
+          //push the entire previous number
+          //we need store the previous operation's index + 1 (start of previous number)
+          //end of previous number is i -1
+        }
+      }
+      tokenArray.push(input.substring(prevNumIndex)) // add last number
+      return tokenArray;
+    }
+
+    function getNextOperation(array) {
+      // return index of next operation 
+        //check for multiplication/division, return smallest index        
+        ////if no mult/d        
+
+    function calculateResult(array, operationIndex) {
+
+    }
+
+    /*
+    ROADMAP:
+    1. Tokenize array
+    2. Use array function to find first of an operator
+    3. Do that operation between the two numbers before and after it in tokenized array
+    4. Replace the two numbers and the operation with the result of the operation
+    */
+
+
+
+    //BRAINSTORM:
+
+    // function findOperation
+    // given + - / *
+    // returns the index
+
+    //NOTE: no spaces in input
+    //step 1: sweep thru input, record starting indices of numbers and operations 
+    //first find indices of all operations
+    //maybe make an array for numbers and an array for operations
+
+    //function doOperation also has to remove the two numbers from num_array 
+    //and replace them with the result, along with removing operation from op_array
+
+    //Assignment suggestion: impose restrictions on input
+    //maybe no nested parentheses, etc
 
 
     // remember DRY: Don't Repeat Yourself!
