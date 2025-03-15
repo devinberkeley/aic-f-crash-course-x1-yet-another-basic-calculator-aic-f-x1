@@ -96,13 +96,37 @@
       return tokenArray;
     }
 
-    function getNextOperation(array) {
+    function getNextOperation() {
+      let opperationarray = []
+      for (i = 0; i < input.length; i++) {
+        if (input[i] == "*" || input[i] == "/" || input[i] == "+" || input[i] == "-")  {
+          operationaray.push(i)
+        }
+      }
       // return index of next operation 
         //check for multiplication/division, return smallest index        
         ////if no mult/d        
 
-    function calculateResult(array, operationIndex) {
-
+    function calculateResult() {
+      let left = parseFloat(tokenArray[i - 1]);
+      let right = parseFloat(tokenArray[i + 1]);
+      let result;
+      for (i=0; i < opperationarray.length; i++) {
+        switch (tokenArray[i]) {
+            case "+":
+                result = left + right;
+                break;
+            case "-":
+                result = left - right;
+                break;
+            case "*":
+                result = left * right;
+                break;
+            case "/":
+                result = left / right;
+                break;
+        }
+      }
     }
 
     /*
